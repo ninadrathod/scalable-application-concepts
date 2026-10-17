@@ -2751,7 +2751,7 @@ function renderModuleRow() {
     const soon = m.status !== 'ready';
     return `
       <a href="#${m.id}" class="group/card relative flex shrink-0 snap-start items-end" data-row-card="${m.id}">
-        <span class="pointer-events-none -mr-5 select-none font-display text-[7rem] leading-[0.75] text-nf-bg [-webkit-text-stroke:2px_#595959] sm:-mr-6 sm:text-[11rem] sm:[-webkit-text-stroke:3px_#595959]">${Number(m.number)}</span>
+        <span class="pointer-events-none mr-1 hidden select-none font-display text-[9rem] leading-[0.75] text-nf-bg [-webkit-text-stroke:3px_#595959] sm:block" aria-hidden="true">${Number(m.number)}</span>
         <div class="relative w-40 overflow-hidden rounded-md border border-nf-line bg-nf-card shadow-lg shadow-black/60 transition duration-300 group-hover/card:z-10 group-hover/card:scale-105 group-hover/card:border-neutral-500 sm:w-48">
           <div class="relative h-24 bg-gradient-to-br ${soon ? 'from-neutral-800 to-neutral-900' : 'from-nf-red via-nf-darkred to-black'} p-3 sm:h-28">
             <span class="font-display text-sm tracking-[0.25em] text-white/70">S · ${m.number}</span>
@@ -2945,12 +2945,13 @@ function initCodeBlocks() {
     const code = pre.querySelector('code');
     if (!code) return;
     if (window.hljs) window.hljs.highlightElement(code);
-    const lang = (code.className.match(/language-(\w+)/) || [])[1];
-    if (lang) {
-      const tag = el('span', 'pointer-events-none absolute left-3 top-0 -translate-y-1/2 rounded-sm bg-nf-red px-1.5 py-px text-[0.6rem] font-bold uppercase tracking-wider text-white', lang);
-      pre.appendChild(tag);
-    }
-    const btn = el('button', 'absolute right-2 top-2 rounded-sm border border-neutral-700 bg-nf-elevated px-2 py-1 font-sans text-[0.7rem] font-semibold text-neutral-300 opacity-80 transition hover:text-white hover:opacity-100', 'Copy');
+    const lang = (code.className.match(/language-(\w+)/) || [])[1] || 'code';
+
+    // Header strip above the code, so the label and Copy button never cover it
+    const frame = el('div', 'code-frame');
+    const bar = el('div', 'flex items-center justify-between gap-3 border-b border-nf-line bg-nf-elevated px-3 py-1.5');
+    bar.appendChild(el('span', 'font-mono text-[0.7rem] font-semibold uppercase tracking-wider text-nf-red', lang));
+    const btn = el('button', 'rounded-sm border border-neutral-700 px-2 py-0.5 font-sans text-[0.7rem] font-semibold text-neutral-300 transition hover:border-neutral-400 hover:text-white', 'Copy');
     btn.type = 'button';
     btn.addEventListener('click', async () => {
       try {
@@ -2961,7 +2962,9 @@ function initCodeBlocks() {
       }
       setTimeout(() => { btn.textContent = 'Copy'; }, 1600);
     });
-    pre.appendChild(btn);
+    bar.appendChild(btn);
+    pre.before(frame);
+    frame.append(bar, pre);
   });
 }
 

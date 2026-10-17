@@ -119,6 +119,8 @@
       .text-shadow { text-shadow: 2px 2px 4px rgba(0,0,0,.45); }
     }
     .prose pre { @apply relative border border-nf-line !rounded-md !p-0; }
+    .code-frame { @apply my-6 overflow-hidden rounded-md border border-nf-line bg-[#0b0b0b]; }
+    .code-frame > pre { @apply !my-0 !rounded-none !border-0; }
     .prose pre code.hljs { @apply !bg-transparent !p-4 text-[0.82rem] leading-relaxed; }
     .prose :where(code):not(:where(pre *))::before, .prose :where(code):not(:where(pre *))::after { content: none; }
     .prose :where(code):not(:where(pre *)) { @apply rounded bg-white/10 px-1.5 py-0.5 font-medium; overflow-wrap: anywhere; }
@@ -171,7 +173,7 @@
 
   <main id="top">
     <!-- ===================================================== BILLBOARD HERO -->
-    <section class="relative flex min-h-[88vh] items-end overflow-hidden pb-20 pt-28 sm:items-center sm:pb-0">
+    <section class="relative flex min-h-[88vh] items-end overflow-hidden pb-24 pt-28 sm:items-center sm:pb-28">
       <!-- Abstract "network of servers" artwork -->
       <svg class="absolute inset-0 h-full w-full" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
@@ -245,7 +247,7 @@
     </section>
 
     <!-- ===================================================== MODULE ROW ("Top 10" style) -->
-    <section id="episodes" class="relative z-10 -mt-10 scroll-mt-20 sm:-mt-16">
+    <section id="episodes" class="relative z-10 -mt-10 scroll-mt-20">
       <div class="mx-auto max-w-[1600px] px-4 sm:px-8 lg:px-12">
         <h2 class="mb-3 text-lg font-bold text-white sm:text-xl">The Curriculum <span class="ml-2 text-sm font-normal text-nf-muted">— every module, from scratch to production</span></h2>
       </div>
@@ -253,7 +255,7 @@
         <button data-row-scroll="-1" class="absolute left-0 top-0 z-20 hidden h-full w-12 bg-black/50 text-white opacity-0 transition group-hover/row:opacity-100 sm:block" aria-label="Scroll modules left">
           <svg class="mx-auto h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 5l-7 7 7 7"/></svg>
         </button>
-        <div id="module-row" class="no-scrollbar flex snap-x gap-2 overflow-x-auto scroll-smooth px-4 pb-8 pt-2 sm:px-8 lg:px-12"></div>
+        <div id="module-row" class="no-scrollbar flex snap-x gap-3 overflow-x-auto scroll-smooth scroll-px-4 px-4 pb-8 pt-2 sm:scroll-px-8 sm:px-8 lg:scroll-px-12 lg:px-12"></div>
         <button data-row-scroll="1" class="absolute right-0 top-0 z-20 hidden h-full w-12 bg-black/50 text-white opacity-0 transition group-hover/row:opacity-100 sm:block" aria-label="Scroll modules right">
           <svg class="mx-auto h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg>
         </button>
@@ -300,7 +302,7 @@
             <div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-10">
               <span class="font-display text-[7rem] leading-[0.8] text-transparent [-webkit-text-stroke:2px_#595959] sm:text-[9rem]">00</span>
               <div>
-                <p class="font-display text-lg tracking-[0.3em] text-nf-red">Module 00 · Pilot Episode</p>
+                <p class="font-display text-base tracking-[0.15em] text-nf-red sm:text-lg sm:tracking-[0.3em]">Module 00 · Pilot Episode</p>
                 <h2 class="mt-1 font-display text-4xl leading-none tracking-wide text-white min-[400px]:text-5xl sm:text-6xl">Prerequisites &amp; Environment Setup</h2>
                 <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span class="font-semibold text-nf-green">Start here</span>
@@ -757,7 +759,7 @@ k6 version                 # k6 v0.5x / v1.x</code></pre>
                     <text class="lt" x="74" y="146" text-anchor="middle">k6</text>
                     <text class="ls" x="74" y="166" text-anchor="middle">load generator</text>
                     <path class="ll" d="M134 150 H206" marker-end="url(#arr)"/>
-                    <text class="ls" x="140" y="140">:8080</text>
+                    <text class="ls" x="152" y="140" text-anchor="middle">:8080</text>
                     <rect class="lr" x="210" y="110" width="140" height="80" rx="6"/>
                     <text class="lt" x="280" y="145" text-anchor="middle">nginx</text>
                     <text class="ls" x="280" y="165" text-anchor="middle">reverse proxy / LB</text>
@@ -1024,7 +1026,7 @@ vus_max..............: 20</code></pre>
             <div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-10">
               <span class="font-display text-[7rem] leading-[0.8] text-transparent [-webkit-text-stroke:2px_#595959] sm:text-[9rem]">01</span>
               <div>
-                <p class="font-display text-lg tracking-[0.3em] text-nf-red">Module 01</p>
+                <p class="font-display text-base tracking-[0.15em] text-nf-red sm:text-lg sm:tracking-[0.3em]">Module 01</p>
                 <h2 class="mt-1 font-display text-4xl leading-none tracking-wide text-white min-[400px]:text-5xl sm:text-6xl">Foundations of Scale</h2>
                 <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span class="font-semibold text-nf-green">Core theory</span>
@@ -1202,8 +1204,8 @@ vus_max..............: 20</code></pre>
               <p>
                 The most useful equation in capacity planning is astonishingly simple. For any stable system:
               </p>
-              <div class="not-prose my-6 rounded-md border border-nf-line bg-black/60 p-6 text-center">
-                <p class="font-display text-5xl tracking-wider text-white">L = λ × W</p>
+              <div class="not-prose my-6 rounded-md border border-nf-line bg-black/60 p-4 text-center sm:p-6">
+                <p class="font-mono text-sm font-semibold leading-relaxed text-white min-[400px]:text-base sm:text-2xl">L = λ × W</p>
                 <p class="mt-2 text-sm text-nf-muted">items in the system = arrival rate × average time each item spends in the system</p>
               </div>
               <p>
@@ -1255,7 +1257,7 @@ vus_max..............: 20</code></pre>
                       points="60,260 110,258.7 160,257 210,254.8 260,251.9 310,247.9 360,241.8 410,231.8 460,211.6 485,191.4 510,151.1 522.5,110.7 535,30"/>
                     <circle cx="310" cy="247.9" r="5" fill="#fff"/><text class="ht" x="300" y="236" text-anchor="end" fill="#fff">50% → 2×</text>
                     <circle cx="460" cy="211.6" r="5" fill="#fff"/><text class="ht" x="452" y="206" text-anchor="end" fill="#fff">80% → 5×</text>
-                    <circle cx="510" cy="151.1" r="5" fill="#fff"/><text class="ht" x="502" y="146" text-anchor="end" fill="#fff">90% → 10×</text>
+                    <circle cx="510" cy="151.1" r="5" fill="#fff"/><line x1="454" y1="151.1" x2="503" y2="151.1" stroke="#fff" stroke-width="1" opacity=".5"/><text class="ht" x="450" y="155" text-anchor="end" fill="#fff">90% → 10×</text>
                   </svg>
                 </div>
                 <figcaption><b>Figure 1.2 — The utilization "hockey stick" (M/M/1 model).</b> Latency barely moves until ~70% utilization, then climbs steeply. Real systems differ in the exact curve, never in its shape.</figcaption>
@@ -1305,8 +1307,8 @@ vus_max..............: 20</code></pre>
                 Any workload has a part that can run in parallel and a part that cannot — writing to one primary database, acquiring a global lock, a single coordinator. If a fraction
                 <code>p</code> is parallelizable, the best speedup with <code>N</code> workers is:
               </p>
-              <div class="not-prose my-6 rounded-md border border-nf-line bg-black/60 p-6 text-center">
-                <p class="font-display text-4xl tracking-wider text-white">Speedup(N) = 1 / ((1 − p) + p / N)</p>
+              <div class="not-prose my-6 rounded-md border border-nf-line bg-black/60 p-4 text-center sm:p-6">
+                <p class="font-mono text-sm font-semibold leading-relaxed text-white min-[400px]:text-base sm:text-2xl"><span class="whitespace-nowrap">Speedup(N) =</span> <span class="whitespace-nowrap">1 / ((1 − p) + p / N)</span></p>
               </div>
               <p>
                 With <code>p = 0.95</code>, infinite servers give at most 1 / 0.05 = <strong>20×</strong>. A mere 5% serial portion caps you at 20× no matter how much money you spend. That is why
@@ -1317,8 +1319,8 @@ vus_max..............: 20</code></pre>
                 Neil Gunther's USL adds a second penalty: <strong>coherency (crosstalk)</strong> — the cost of nodes coordinating with each other (cache invalidation, distributed locks, gossip, replication
                 acknowledgments). Contention (<code>α</code>) causes diminishing returns; coherency (<code>β</code>) grows with N², so beyond a peak, adding nodes <strong>reduces</strong> throughput.
               </p>
-              <div class="not-prose my-6 rounded-md border border-nf-line bg-black/60 p-6 text-center">
-                <p class="font-display text-4xl tracking-wider text-white">C(N) = N / (1 + α(N − 1) + βN(N − 1))</p>
+              <div class="not-prose my-6 rounded-md border border-nf-line bg-black/60 p-4 text-center sm:p-6">
+                <p class="font-mono text-sm font-semibold leading-relaxed text-white min-[400px]:text-base sm:text-2xl"><span class="whitespace-nowrap">C(N) =</span> <span class="whitespace-nowrap">N / (1 + α(N − 1) + βN(N − 1))</span></p>
               </div>
 
               <figure class="not-prose figure">
@@ -1726,7 +1728,7 @@ docker stats --no-stream                                    # watch CPU % per co
             <div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-10">
               <span class="font-display text-[7rem] leading-[0.8] text-transparent [-webkit-text-stroke:2px_#595959] sm:text-[9rem]">02</span>
               <div>
-                <p class="font-display text-lg tracking-[0.3em] text-nf-red">Module 02</p>
+                <p class="font-display text-base tracking-[0.15em] text-nf-red sm:text-lg sm:tracking-[0.3em]">Module 02</p>
                 <h2 class="mt-1 font-display text-4xl leading-none tracking-wide text-white min-[400px]:text-5xl sm:text-6xl">Load Balancing &amp; Reverse Proxies</h2>
                 <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span class="font-semibold text-nf-green">Traffic engineering</span>
@@ -2345,7 +2347,7 @@ docker compose ps -q app | head -1 | xargs docker kill</code></pre>
             <div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-10">
               <span class="font-display text-[7rem] leading-[0.8] text-transparent [-webkit-text-stroke:2px_#595959] sm:text-[9rem]">03</span>
               <div>
-                <p class="font-display text-lg tracking-[0.3em] text-nf-red">Module 03</p>
+                <p class="font-display text-base tracking-[0.15em] text-nf-red sm:text-lg sm:tracking-[0.3em]">Module 03</p>
                 <h2 class="mt-1 font-display text-4xl leading-none tracking-wide text-white min-[400px]:text-5xl sm:text-6xl">Caching at Every Layer</h2>
                 <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span class="font-semibold text-nf-green">Biggest win per hour spent</span>
@@ -2408,8 +2410,8 @@ docker compose ps -q app | head -1 | xargs docker kill</code></pre>
 
               <h4>The two numbers that matter</h4>
               <p>A cache's value comes down to its <strong>hit ratio</strong> <code>h</code> (fraction of lookups found in cache) and the latency gap between a hit and a miss:</p>
-              <div class="not-prose my-6 rounded-md border border-nf-line bg-black/60 p-6 text-center">
-                <p class="font-display text-3xl tracking-wider text-white sm:text-4xl">avg latency = h × t<sub>hit</sub> + (1 − h) × (t<sub>hit</sub> + t<sub>miss</sub>)</p>
+              <div class="not-prose my-6 rounded-md border border-nf-line bg-black/60 p-4 text-center sm:p-6">
+                <p class="font-mono text-sm font-semibold leading-relaxed text-white min-[400px]:text-base sm:text-2xl"><span class="whitespace-nowrap">avg latency =</span> <span class="whitespace-nowrap">h × t<sub>hit</sub></span> <span class="whitespace-nowrap">+ (1 − h) × (t<sub>hit</sub> + t<sub>miss</sub>)</span></p>
                 <p class="mt-2 text-sm text-nf-muted">a miss pays for the cache lookup <em>and</em> the trip to the origin</p>
               </div>
               <p>
@@ -2994,7 +2996,7 @@ docker compose start redis</code></pre>
             <div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-10">
               <span class="font-display text-[7rem] leading-[0.8] text-transparent [-webkit-text-stroke:2px_#595959] sm:text-[9rem]">04</span>
               <div>
-                <p class="font-display text-lg tracking-[0.3em] text-nf-red">Module 04</p>
+                <p class="font-display text-base tracking-[0.15em] text-nf-red sm:text-lg sm:tracking-[0.3em]">Module 04</p>
                 <h2 class="mt-1 font-display text-4xl leading-none tracking-wide text-white min-[400px]:text-5xl sm:text-6xl">Scaling the Database</h2>
                 <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span class="font-semibold text-nf-green">The stateful core</span>
@@ -3195,7 +3197,7 @@ SELECT id, name FROM products WHERE id &gt; 100000 ORDER BY id LIMIT 20;</code><
                     <g class="m4p-fat">
                       <line x1="540" y1="125" x2="690" y2="125"/><line x1="540" y1="140" x2="690" y2="140"/><line x1="540" y1="155" x2="690" y2="155"/>
                     </g>
-                    <text class="m4p-s" x="615" y="200" text-anchor="middle">~40 real server connections</text>
+                    <text class="m4p-s" x="600" y="200" text-anchor="middle">~40 real server connections</text>
                     <rect class="m4p-b" x="690" y="90" width="190" height="100" rx="6"/>
                     <text class="m4p-t" x="785" y="132" text-anchor="middle">PostgreSQL</text>
                     <text class="m4p-s" x="785" y="152" text-anchor="middle">1 process per connection</text>
@@ -3569,7 +3571,7 @@ docker compose logs app | grep -i "too many clients"</code></pre>
             <div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-10">
               <span class="font-display text-[7rem] leading-[0.8] text-transparent [-webkit-text-stroke:2px_#595959] sm:text-[9rem]">05</span>
               <div>
-                <p class="font-display text-lg tracking-[0.3em] text-nf-red">Module 05</p>
+                <p class="font-display text-base tracking-[0.15em] text-nf-red sm:text-lg sm:tracking-[0.3em]">Module 05</p>
                 <h2 class="mt-1 font-display text-4xl leading-none tracking-wide text-white min-[400px]:text-5xl sm:text-6xl">Asynchronous Processing: Queues &amp; Streams</h2>
                 <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span class="font-semibold text-nf-green">Decouple in time</span>
@@ -4166,7 +4168,7 @@ docker compose logs -f worker            # watch retries succeed with backoff</c
             <div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-10">
               <span class="font-display text-[7rem] leading-[0.8] text-transparent [-webkit-text-stroke:2px_#595959] sm:text-[9rem]">06</span>
               <div>
-                <p class="font-display text-lg tracking-[0.3em] text-nf-red">Module 06</p>
+                <p class="font-display text-base tracking-[0.15em] text-nf-red sm:text-lg sm:tracking-[0.3em]">Module 06</p>
                 <h2 class="mt-1 font-display text-4xl leading-none tracking-wide text-white min-[400px]:text-5xl sm:text-6xl">Service Architecture &amp; APIs</h2>
                 <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span class="font-semibold text-nf-green">Scaling teams and code</span>
@@ -4643,7 +4645,7 @@ app.get('/api/products', async (req, res, next) =&gt; {
             <div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-10">
               <span class="font-display text-[7rem] leading-[0.8] text-transparent [-webkit-text-stroke:2px_#595959] sm:text-[9rem]">07</span>
               <div>
-                <p class="font-display text-lg tracking-[0.3em] text-nf-red">Module 07</p>
+                <p class="font-display text-base tracking-[0.15em] text-nf-red sm:text-lg sm:tracking-[0.3em]">Module 07</p>
                 <h2 class="mt-1 font-display text-4xl leading-none tracking-wide text-white min-[400px]:text-5xl sm:text-6xl">Frontend Performance at Scale</h2>
                 <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span class="font-semibold text-nf-green">The other half of every page load</span>
@@ -4961,7 +4963,7 @@ app.use(express.static('public'));</code></pre>
             <div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-10">
               <span class="font-display text-[7rem] leading-[0.8] text-transparent [-webkit-text-stroke:2px_#595959] sm:text-[9rem]">08</span>
               <div>
-                <p class="font-display text-lg tracking-[0.3em] text-nf-red">Module 08</p>
+                <p class="font-display text-base tracking-[0.15em] text-nf-red sm:text-lg sm:tracking-[0.3em]">Module 08</p>
                 <h2 class="mt-1 font-display text-4xl leading-none tracking-wide text-white min-[400px]:text-5xl sm:text-6xl">Containers, Orchestration &amp; Autoscaling</h2>
                 <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span class="font-semibold text-nf-green">Elasticity in practice</span>
@@ -5195,9 +5197,9 @@ spec:
                 <li><strong>KEDA</strong> (Kubernetes Event-Driven Autoscaling) scales on external signals — Kafka lag, SQS depth, Redis list length — including scaling workers <strong>to zero</strong> when the queue is empty (Module 05).</li>
               </ul>
               <h4>The HPA formula</h4>
-              <div class="not-prose my-6 rounded-md border border-nf-line bg-black/60 p-6 text-center">
-                <p class="font-display text-3xl tracking-wider text-white sm:text-4xl">desired = ⌈ current × (current metric ÷ target metric) ⌉</p>
-                <p class="mt-2 text-sm text-nf-muted">with a default ±10% tolerance, and a 5-minute stabilization window before scaling down</p>
+              <div class="not-prose my-6 rounded-md border border-nf-line bg-black/60 p-4 text-center sm:p-6">
+                <p class="font-mono text-sm font-semibold leading-relaxed text-white min-[400px]:text-base sm:text-2xl"><span class="whitespace-nowrap">desired =</span> <span class="whitespace-nowrap">⌈ replicas ×</span> <span class="whitespace-nowrap">(current ÷ target) ⌉</span></p>
+                <p class="mt-2 text-sm text-nf-muted">current and target are the observed and desired metric values (e.g. CPU %), with a default ±10% tolerance and a 5-minute stabilization window before scaling down</p>
               </div>
               <div class="not-prose" data-hpa-calc></div>
 <pre><code class="language-yaml">apiVersion: autoscaling/v2
@@ -5394,7 +5396,7 @@ kubectl get hpa scale-lab -w</code></pre>
             <div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-10">
               <span class="font-display text-[7rem] leading-[0.8] text-transparent [-webkit-text-stroke:2px_#595959] sm:text-[9rem]">09</span>
               <div>
-                <p class="font-display text-lg tracking-[0.3em] text-nf-red">Module 09</p>
+                <p class="font-display text-base tracking-[0.15em] text-nf-red sm:text-lg sm:tracking-[0.3em]">Module 09</p>
                 <h2 class="mt-1 font-display text-4xl leading-none tracking-wide text-white min-[400px]:text-5xl sm:text-6xl">Observability: Logs, Metrics &amp; Traces</h2>
                 <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span class="font-semibold text-nf-green">See inside the machine</span>
@@ -5741,7 +5743,7 @@ k6 run -e CACHED=1 k6/cache.js</code></pre>
             <div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-10">
               <span class="font-display text-[7rem] leading-[0.8] text-transparent [-webkit-text-stroke:2px_#595959] sm:text-[9rem]">10</span>
               <div>
-                <p class="font-display text-lg tracking-[0.3em] text-nf-red">Module 10</p>
+                <p class="font-display text-base tracking-[0.15em] text-nf-red sm:text-lg sm:tracking-[0.3em]">Module 10</p>
                 <h2 class="mt-1 font-display text-4xl leading-none tracking-wide text-white min-[400px]:text-5xl sm:text-6xl">Resilience Engineering</h2>
                 <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span class="font-semibold text-nf-green">Fail well</span>
@@ -6149,7 +6151,7 @@ k6 run -e CACHED=0 k6/cache.js                     # watch it fall apart</code><
             <div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-10">
               <span class="font-display text-[7rem] leading-[0.8] text-transparent [-webkit-text-stroke:2px_#595959] sm:text-[9rem]">11</span>
               <div>
-                <p class="font-display text-lg tracking-[0.3em] text-nf-red">Module 11</p>
+                <p class="font-display text-base tracking-[0.15em] text-nf-red sm:text-lg sm:tracking-[0.3em]">Module 11</p>
                 <h2 class="mt-1 font-display text-4xl leading-none tracking-wide text-white min-[400px]:text-5xl sm:text-6xl">Security at Scale</h2>
                 <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span class="font-semibold text-nf-green">Adversaries included</span>
@@ -6444,7 +6446,7 @@ RESET ROLE;                                              -- back to the superuse
             <div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-10">
               <span class="font-display text-[7rem] leading-[0.8] text-transparent [-webkit-text-stroke:2px_#595959] sm:text-[9rem]">12</span>
               <div>
-                <p class="font-display text-lg tracking-[0.3em] text-nf-red">Module 12 · Season Finale</p>
+                <p class="font-display text-base tracking-[0.15em] text-nf-red sm:text-lg sm:tracking-[0.3em]">Module 12 · Season Finale</p>
                 <h2 class="mt-1 font-display text-4xl leading-none tracking-wide text-white min-[400px]:text-5xl sm:text-6xl">Capstone: Designing a Production System</h2>
                 <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span class="font-semibold text-nf-green">Everything, together</span>
